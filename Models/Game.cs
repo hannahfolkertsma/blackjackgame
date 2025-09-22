@@ -108,6 +108,7 @@
         // play a game of blackjack
         public void play()
         {
+            /*
             //game start
             //draw two cards for the dealer - only display one,and hide total
             dealer.Add(drawCard());
@@ -121,12 +122,15 @@
 
             //if either pulls 21, end game
             if(playerval == 21 || dealerval == 21) { return; }
+
             //if not, continue:
             //player select "hit" or "stand"
             // if hit, deal and update
 
             //if dealer total < 17
             if(dealerval < 17) { dealer.Add(drawCard()); };
+            */
+
         }
     }
 }

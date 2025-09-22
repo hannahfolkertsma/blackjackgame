@@ -31,3 +31,4 @@ C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\refint\
 C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.pdb
 C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.genruntimeconfig.cache
 C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\ref\blackjackgame.dll
+C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.sourcelink.json
