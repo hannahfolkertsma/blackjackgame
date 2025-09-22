@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script src="//code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".start").click(function () {
+            $.ajax({
+                type: "POST",
+                url:  "@Url.Action("Start", "Home")",
+                dataType: "json",
+                success: function (response){
+                    console.log(response);
+                },
+            })
+        });
+    });
+</script>
+
+<div class="text-center">
+    <h1 class="display-4">blackjack</h1>
+    <form >
+        <asp:Button class="start">start</asp:Button>
+        <asp:Button class="hit">hit</asp:Button>
+        <asp:Button class="stand">stand</asp:Button>
+        <div><p>dealer</p>
+            <div id="cardscontainer">
+
+            </div>
+            </div>
+        <div><p>player</p></div>
+        
+    </form>
+</div>
+
