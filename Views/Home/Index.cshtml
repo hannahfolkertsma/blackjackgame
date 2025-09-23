@@ -1,4 +1,4 @@
-﻿
+﻿@model blackjack.Models.GameViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -10,10 +10,15 @@
             $.ajax({
                 type: "POST",
                 url:  "@Url.Action("Start", "Home")",
-                dataType: "json",
-                success: function (response){
+                success: function  (response) {
+                    console.log("test");
                     console.log(response);
+                   
                 },
+                error: function (jqXHR, textStatus, errorThrown) {
+        console.log(errorThrown);
+        console.log(textStatus);
+    }
             })
         });
     });
@@ -25,14 +30,12 @@
         <asp:Button class="start">start</asp:Button>
         <asp:Button class="hit">hit</asp:Button>
         <asp:Button class="stand">stand</asp:Button>
-        <div><p>dealer</p>
             <div id="cardscontainer">
-                 
-                <img id="cards" />
-                <img src="@Url.Content("/images/MA.png")" />
-            </div>
-            </div>
-        <div><p>player</p></div>
+            @if (Model != null)
+            {
+                <img src="%="UrlAction("images", Model.playerhand[0].image)"%"/>
+            }
+        </div>
         
     </form>
 </div>
