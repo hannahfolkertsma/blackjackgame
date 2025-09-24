@@ -35,6 +35,7 @@ namespace blackjackgame.Models
             if(playerval > 21)
             {
                 playerbust = true;
+                dealerwin = true;
             }
             else if(playerval == 21)
             {
@@ -43,6 +44,7 @@ namespace blackjackgame.Models
             else if(dealerval > 21)
             {
                 dealerbust = true;
+                playerwin = true;
             }
             else if(dealerval == 21)
             {

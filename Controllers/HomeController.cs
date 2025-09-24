@@ -36,9 +36,6 @@ namespace blackjackgame.Controllers
             int playerval = blackjack.calculateTotal(blackjack.player);
             int dealerval = blackjack.calculateTotal(blackjack.dealer);
 
-            if (dealerval < 17) { blackjack.dealer.Add(blackjack.drawCard()); };
-            dealerval = blackjack.calculateTotal(blackjack.dealer);
-
             viewmodel = new GameViewModel(blackjack.player, blackjack.dealer, blackjack.calculateTotal(blackjack.player), blackjack.calculateTotal(blackjack.dealer));
 
             //if either pulls 21, end game

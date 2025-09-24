@@ -69,11 +69,11 @@
                             <img class="images" src='@Url.Action(card.image, "images")' />
                         }
                         @if(Model.dealerbust){
-                            <p>dealer bust</p>
+                            <h1>dealer bust</h1>
                         }
                         @if (Model.dealerwin)
                         {
-                            <p>dealer wins</p>
+                            <h1>dealer wins</h1>
                         }
                     </div>
                     </td>
@@ -87,16 +87,19 @@
                         }
                         @if (Model.playerbust)
                         {
-                            <p>you bust</p>
+                            <h1>you bust</h1>
                         }
                         @if (Model.playerwin)
                         {
-                            <p>you win!</p>
+                            <h1>you win!</h1>
                         }
                     </div>
                     </td>
                 </tr>
-
+            @if (Model.draw)
+            {
+                <p>it's a draw!</p>
+            }
         </table>
         <table>
             <tr>
