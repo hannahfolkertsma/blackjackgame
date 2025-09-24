@@ -1,41 +1,100 @@
-﻿@model blackjack.Models.GameViewModel
-@{
-    ViewData["Title"] = "Home Page";
-}
+﻿
+@model blackjackgame.Models.GameViewModel
+
+
+<link rel=stylesheet href="~/css/site.css" type="text/css">
 
 <script src="//code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
-        $(".start").click(function () {
-            $.ajax({
+        $("#start").click(function () {
+           $.ajax({
                 type: "POST",
                 url:  "@Url.Action("Start", "Home")",
                 success: function  (response) {
-                    console.log("test");
                     console.log(response);
-                   
+                    $("body").html(response);
+                  
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-        console.log(errorThrown);
-        console.log(textStatus);
-    }
+                    console.log(errorThrown);
+                }
+            })
+        });
+
+        $("#hit").click(function () {
+            $.ajax({
+                type: "POST",
+                url:  "@Url.Action("Hit", "Home")",
+                success: function  (response) {
+                    console.log(response);
+                    $("body").html(response);
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
             })
         });
     });
 </script>
 
-<div class="text-center">
-    <h1 class="display-4">blackjack</h1>
+<div class="container">
+    <h1>blackjack</h1>
     <form >
-        <asp:Button class="start">start</asp:Button>
-        <asp:Button class="hit">hit</asp:Button>
-        <asp:Button class="stand">stand</asp:Button>
-            <div id="cardscontainer">
-            @if (Model != null)
-            {
-                <img src="%="UrlAction("images", Model.playerhand[0].image)"%"/>
-            }
-        </div>
+        <div id="newgamecontainer"><asp:Button id="start">New Game</asp:Button></div>
+        
+            <table id="cardcontainer">
+                <tr>
+                    <td>
+                    <div>
+                        <p>dealer</p>
+                        @foreach (Card card in Model.dealerhand)
+                        {
+                            <img class="images" src='@Url.Action(card.image, "images")' />
+                        }
+                        @if(Model.dealerbust){
+                            <p>dealer bust</p>
+                        }
+                        @if (Model.dealerwin)
+                        {
+                            <p>dealer wins</p>
+                        }
+                    </div>
+                    </td>
+                    <td>
+
+                    <div>
+                        <p>player</p>
+                        @foreach (Card card in Model.playerhand)
+                        {
+                            <img class="images" src='@Url.Action(card.image, "images")' />
+                        }
+                        @if (Model.playerbust)
+                        {
+                            <p>you bust</p>
+                        }
+                        @if (Model.playerwin)
+                        {
+                            <p>you win!</p>
+                        }
+                    </div>
+                    </td>
+                </tr>
+
+        </table>
+        <table>
+            <tr>
+                <td>
+
+                    <asp:Button id="hit">hit</asp:Button>
+                </td>
+                <td>
+
+                    <asp:Button id="stand">stand</asp:Button>
+                </td>
+            </tr>
+        </table>
         
     </form>
 </div>

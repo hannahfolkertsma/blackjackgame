@@ -20,3 +20,26 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.images{
+    height: 200px;
+    width: 128px;
+    margin: 16px;
+
+}
+
+#cardcontainer{
+    table-layout: fixed; 
+    width: 100%;
+    padding: 100px;
+}
+
+td{
+    width: 50%;
+    text-align: center;
+}
+
+#newgamecontainer{
+    width: 100%;
+    text-align: center;
+}

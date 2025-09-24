@@ -1,4 +1,6 @@
-﻿namespace blackjack.Models
+﻿using System.Text.Json.Serialization.Metadata;
+
+namespace blackjackgame.Models
 {
     public class Game
     {
@@ -11,8 +13,8 @@
            List<Card>{
             new Card(CardNames.MA, "MA.png", 11),
             new Card(CardNames.MK, "MK.png", 10),
-            new Card(CardNames.MQ, "MQ.png", 11),
-            new Card(CardNames.MJ, "MJ.png", 11),
+            new Card(CardNames.MQ, "MQ.png", 10),
+            new Card(CardNames.MJ, "MJ.png", 10),
             new Card(CardNames.M10, "M10.png", 10),
             new Card(CardNames.M9, "M9.png", 9),
             new Card(CardNames.M8, "M8.png", 8),
@@ -25,8 +27,8 @@
 
             new Card(CardNames.FA, "FA.png", 11),
             new Card(CardNames.FK, "FK.png", 10),
-            new Card(CardNames.FQ, "FQ.png", 11),
-            new Card(CardNames.FJ, "FJ.png", 11),
+            new Card(CardNames.FQ, "FQ.png", 10),
+            new Card(CardNames.FJ, "FJ.png", 10),
             new Card(CardNames.F10, "F10.png", 10),
             new Card(CardNames.F9, "F9.png", 9),
             new Card(CardNames.F8, "F8.png", 8),
@@ -39,8 +41,8 @@
 
             new Card(CardNames.CA, "CA.png", 11),
             new Card(CardNames.CK, "CK.png", 10),
-            new Card(CardNames.CQ, "CQ.png", 11),
-            new Card(CardNames.CJ, "CJ.png", 11),
+            new Card(CardNames.CQ, "CQ.png", 10),
+            new Card(CardNames.CJ, "CJ.png", 10),
             new Card(CardNames.C10, "C10.png", 10),
             new Card(CardNames.C9, "C9.png", 9),
             new Card(CardNames.C8, "C8.png", 8),
@@ -53,8 +55,8 @@
 
             new Card(CardNames.LA, "LA.png", 11),
             new Card(CardNames.LK, "LK.png", 10),
-            new Card(CardNames.LQ, "LQ.png", 11),
-            new Card(CardNames.LJ, "LJ.png", 11),
+            new Card(CardNames.LQ, "LQ.png", 10),
+            new Card(CardNames.LJ, "LJ.png", 10),
             new Card(CardNames.L10, "L10.png", 10),
             new Card(CardNames.L9, "L9.png", 9),
             new Card(CardNames.L8, "L8.png", 8),
@@ -104,6 +106,8 @@
 
         }
 
+        
+        
 
         // play a game of blackjack
         public void play()
@@ -135,4 +139,5 @@
 
         }
     }
+
 }

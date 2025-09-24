@@ -1,4 +1,4 @@
-﻿namespace blackjack.Models
+﻿namespace blackjackgame.Models
 {
     public class Card
     {

@@ -1,15 +1,13 @@
-using blackjack.Models;
+using blackjackgame.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using System.Numerics;
-using System.Text.Json;
-using System.Transactions;
 
 namespace blackjackgame.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        public static Game blackjack = new Game();
+        public GameViewModel viewmodel = new GameViewModel();
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -18,14 +16,15 @@ namespace blackjackgame.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            GameViewModel viewModel = new GameViewModel();
+            return View("Index", viewModel);
         }
 
 
         [HttpPost]
         public ActionResult Start()
         {
-            Game blackjack = new Game();
+            blackjack = new Game();
             //game start
             //draw two cards for the dealer - only display one,and hide total
             blackjack.dealer.Add(blackjack.drawCard());
@@ -37,7 +36,10 @@ namespace blackjackgame.Controllers
             int playerval = blackjack.calculateTotal(blackjack.player);
             int dealerval = blackjack.calculateTotal(blackjack.dealer);
 
-            var viewmodel = new GameViewModel(blackjack.dealer, blackjack.player, dealerval, playerval);
+            if (dealerval < 17) { blackjack.dealer.Add(blackjack.drawCard()); };
+            dealerval = blackjack.calculateTotal(blackjack.dealer);
+
+            viewmodel = new GameViewModel(blackjack.player, blackjack.dealer, blackjack.calculateTotal(blackjack.player), blackjack.calculateTotal(blackjack.dealer));
 
             //if either pulls 21, end game
             //if (playerval == 21 || dealerval == 21) { return; }
@@ -47,17 +49,20 @@ namespace blackjackgame.Controllers
             // if hit, deal and update
 
             //if dealer total < 17
-            if (dealerval < 17) { blackjack.dealer.Add(blackjack.drawCard()); };
 
-            return View("Index");
+            return View("Index", viewmodel);
 
 
         }
 
         [HttpPost]
-        public string getImageURL(Card c)
+        public ActionResult Hit()
         {
-            return c.image;
+            blackjack.player.Add(blackjack.drawCard());
+            viewmodel = new GameViewModel(blackjack.player, blackjack.dealer, blackjack.calculateTotal(blackjack.player), blackjack.calculateTotal(blackjack.dealer));
+            return View("Index", viewmodel);
+
+
         }
     }
 }

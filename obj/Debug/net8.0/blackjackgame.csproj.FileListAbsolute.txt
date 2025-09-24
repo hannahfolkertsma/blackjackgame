@@ -1,3 +1,12 @@
+C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.AssemblyInfoInputs.cache
+C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.AssemblyInfo.cs
+C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.csproj.CoreCompileInputs.cache
+C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.RazorAssemblyInfo.cache
+C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.RazorAssemblyInfo.cs
+C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.sourcelink.json
 C:\Users\hanna\source\repos\blackjackgame\blackjackgame\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\hanna\source\repos\blackjackgame\blackjackgame\bin\Debug\net8.0\appsettings.json
 C:\Users\hanna\source\repos\blackjackgame\blackjackgame\bin\Debug\net8.0\blackjackgame.staticwebassets.runtime.json
@@ -7,14 +16,6 @@ C:\Users\hanna\source\repos\blackjackgame\blackjackgame\bin\Debug\net8.0\blackja
 C:\Users\hanna\source\repos\blackjackgame\blackjackgame\bin\Debug\net8.0\blackjackgame.runtimeconfig.json
 C:\Users\hanna\source\repos\blackjackgame\blackjackgame\bin\Debug\net8.0\blackjackgame.dll
 C:\Users\hanna\source\repos\blackjackgame\blackjackgame\bin\Debug\net8.0\blackjackgame.pdb
-C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\rpswa.dswa.cache.json
-C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.AssemblyInfoInputs.cache
-C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.AssemblyInfo.cs
-C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.csproj.CoreCompileInputs.cache
-C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.RazorAssemblyInfo.cache
-C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.RazorAssemblyInfo.cs
 C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\rjimswa.dswa.cache.json
 C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
 C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
@@ -31,4 +32,3 @@ C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\refint\
 C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.pdb
 C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.genruntimeconfig.cache
 C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\ref\blackjackgame.dll
-C:\Users\hanna\source\repos\blackjackgame\blackjackgame\obj\Debug\net8.0\blackjackgame.sourcelink.json
