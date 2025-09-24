@@ -8,6 +8,7 @@ namespace blackjackgame.Controllers
         private readonly ILogger<HomeController> _logger;
         public static Game blackjack = new Game();
         public GameViewModel viewmodel = new GameViewModel();
+        public const int WIN_VALUE = 21;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -32,7 +33,7 @@ namespace blackjackgame.Controllers
             Random random = new Random();
             int index = random.Next(blackjack.deck.Count);
             Card pickedCard = blackjack.deck[index];
-            if(blackjack.calculateTotal(new List<Card>() { blackjack.dealer[0], pickedCard }) == 21)
+            if (blackjack.calculateTotal(new List<Card>() { blackjack.dealer[0], pickedCard }) == WIN_VALUE)
             {
                 blackjack.dealer.Add(pickedCard);
             }
@@ -75,7 +76,7 @@ namespace blackjackgame.Controllers
             blackjack.dealer.Remove(blackjack.dealer[1]);
             blackjack.dealer.Add(blackjack.drawCard());
             // dealer draws until their hand value exceeds 17
-            while(blackjack.calculateTotal(blackjack.dealer) < 17)
+            while (blackjack.calculateTotal(blackjack.dealer) < 17)
             {
 
                 blackjack.dealer.Add(blackjack.drawCard());
@@ -83,20 +84,26 @@ namespace blackjackgame.Controllers
             // determine win 
             int dealerval = blackjack.calculateTotal(blackjack.dealer);
             int playerval = blackjack.calculateTotal(blackjack.player);
-            if(dealerval < 21)
+            if (dealerval < WIN_VALUE)
             {
-                if(dealerval > playerval){
-                    dealerval = 21; //the dealer win condition will be set to true when the model updates
-                }
-                else if(playerval > dealerval)
+                if (dealerval > playerval)
                 {
-                    playerval = 21; //the player win condition will be set to true when the model updates
+                    dealerval = WIN_VALUE; //the dealer win condition will be set to true when the model updates
                 }
-                // if neither of the above expressions are true, then it is a draw. This is handled in the viewmodel. 
+                else if (playerval > dealerval)
+                {
+                    playerval = WIN_VALUE; //the player win condition will be set to true when the model updates
+                }
+                // if neither of the above expressions are true, then it is a draw.
+                else
+                {
+                    dealerval = WIN_VALUE;
+                    playerval = WIN_VALUE;
+                }
             }
-
             viewmodel = new GameViewModel(blackjack.player, blackjack.dealer, playerval, dealerval);
             return View("Index", viewmodel);
+
 
         }
     }

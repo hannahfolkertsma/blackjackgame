@@ -1,5 +1,6 @@
 html {
   font-size: 14px;
+  background-color:antiquewhite;
 }
 
 @media (min-width: 768px) {
@@ -19,6 +20,7 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: antiquewhite;
 }
 
 .images{
@@ -42,19 +44,43 @@ body {
 #newgamecontainer{
     width: 100%;
     height: 50px;
-    align-content: center;
+    text-align: center;
 }
 
-.buttons{
+.buttons {
     height: 50px;
-   display:flex;
+    display: inline-flex;
+    margin: auto;
 }
 
-#buttoncontainer{
+#buttonscontainer{
     table-layout: fixed;
+    width: 100%;
+    margin-top: 50px;
 }
 
-#buttoncontainer td{
+#buttonscontainer td{
     width:25%;
     text-align: center;
+}
+
+h1{
+    width: 100%;
+    text-align:center;
+}
+
+#title {
+    margin: 30px;
+    font-family: "Pixelify Sans";
+}
+
+.pixeltext{
+    font-weight: 700;
+    font-family: "Pixelify Sans";
+    font-size:36px;
+}
+
+.scoretext{
+    font-weight: 700;
+    font-size: 40px;
 }
