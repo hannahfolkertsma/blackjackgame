@@ -64,5 +64,34 @@ namespace blackjackgame.Controllers
 
 
         }
+
+        [HttpPost]
+        public ActionResult Stand()
+        {
+            // dealer draws until their hand value exceeds 17
+            while(blackjack.calculateTotal(blackjack.dealer) < 17)
+            {
+
+                blackjack.dealer.Add(blackjack.drawCard());
+            }
+            // determine win 
+            int dealerval = blackjack.calculateTotal(blackjack.dealer);
+            int playerval = blackjack.calculateTotal(blackjack.player);
+            if(dealerval < 21)
+            {
+                if(dealerval > playerval){
+                    dealerval = 21; //the dealer win condition will be set to true when the model updates
+                }
+                else if(playerval > dealerval)
+                {
+                    playerval = 21; //the player win condition will be set to true when the model updates
+                }
+                // if neither of the above expressions are true, then it is a draw. This is handled in the viewmodel. 
+            }
+
+            viewmodel = new GameViewModel(blackjack.player, blackjack.dealer, playerval, dealerval);
+            return View("Index", viewmodel);
+
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace blackjackgame.Models
         public bool dealerbust = false;
         public bool playerwin = false;
         public bool playerbust = false;
+        public bool draw = false;
 
         public GameViewModel()
         {
@@ -23,6 +24,7 @@ namespace blackjackgame.Models
             playerwin = false;
             dealerbust = false;
             dealerwin = false;
+            draw = false;
         }
         public GameViewModel(List<Card> player, List<Card> dealer, int p, int d) {
             playerhand = player;
@@ -46,12 +48,14 @@ namespace blackjackgame.Models
             {
                 dealerwin = true;
             }
+            else if(playerval == dealerval)
+            {
+                draw = true;
+            }
+            // if none off the above are true, there is no determined winner yet
         }
 
-        public void updatePlayerHand(List<Card> player)
-        {
-            playerhand = player;
-        }
+
 
     }
 }
