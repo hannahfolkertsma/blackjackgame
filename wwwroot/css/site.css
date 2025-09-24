@@ -34,12 +34,27 @@ body {
     padding: 100px;
 }
 
-td{
+#cardcontainer td{
     width: 50%;
     text-align: center;
 }
 
 #newgamecontainer{
     width: 100%;
+    height: 50px;
+    align-content: center;
+}
+
+.buttons{
+    height: 50px;
+   display:flex;
+}
+
+#buttoncontainer{
+    table-layout: fixed;
+}
+
+#buttoncontainer td{
+    width:25%;
     text-align: center;
 }

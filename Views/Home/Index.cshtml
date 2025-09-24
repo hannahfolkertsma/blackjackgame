@@ -57,7 +57,7 @@
 <div class="container">
     <h1>blackjack</h1>
     <form >
-        <div id="newgamecontainer"><asp:Button id="start">New Game</asp:Button></div>
+        <div id="newgamecontainer"><asp:Button class="buttons" id="start"><img src='@Url.Action("NEWGAME.png", "images")' /></asp:Button></div>
         
             <table id="cardcontainer">
                 <tr>
@@ -101,15 +101,17 @@
                 <p>it's a draw!</p>
             }
         </table>
-        <table>
+        <table id="buttonscontainer">
             <tr>
+                <td/>
                 <td>
 
-                    <asp:Button id="hit">hit</asp:Button>
+                    <asp:Button class="buttons" id="hit"><img src='@Url.Action("HIT.png", "images")' /></asp:Button>
                 </td>
                 <td>
 
-                    <asp:Button id="stand">stand</asp:Button>
+                    <asp:Button class="buttons" id="stand"><img src='@Url.Action("STAND.png", "images")' /></asp:Button>
+                </td>
                 </td>
             </tr>
         </table>

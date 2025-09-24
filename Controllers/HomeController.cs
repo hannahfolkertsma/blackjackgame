@@ -28,7 +28,18 @@ namespace blackjackgame.Controllers
             //game start
             //draw two cards for the dealer - only display one,and hide total
             blackjack.dealer.Add(blackjack.drawCard());
-            blackjack.dealer.Add(blackjack.drawCard());
+            //check if the dealer draws a natural - if so, the card is played face up immediately
+            Random random = new Random();
+            int index = random.Next(blackjack.deck.Count);
+            Card pickedCard = blackjack.deck[index];
+            if(blackjack.calculateTotal(new List<Card>() { blackjack.dealer[0], pickedCard }) == 21)
+            {
+                blackjack.dealer.Add(pickedCard);
+            }
+            else
+            {
+                blackjack.dealer.Add(new Card(CardNames.BACK, "BACK.png", 0));
+            }
             //draw two cards for the player
             blackjack.player.Add(blackjack.drawCard());
             blackjack.player.Add(blackjack.drawCard());
@@ -36,22 +47,16 @@ namespace blackjackgame.Controllers
             int playerval = blackjack.calculateTotal(blackjack.player);
             int dealerval = blackjack.calculateTotal(blackjack.dealer);
 
+            //populate the viewmodel and return to the view
             viewmodel = new GameViewModel(blackjack.player, blackjack.dealer, blackjack.calculateTotal(blackjack.player), blackjack.calculateTotal(blackjack.dealer));
-
-            //if either pulls 21, end game
-            //if (playerval == 21 || dealerval == 21) { return; }
-
-            //if not, continue:
-            //player select "hit" or "stand"
-            // if hit, deal and update
-
-            //if dealer total < 17
 
             return View("Index", viewmodel);
 
 
         }
 
+        // Add a card to the player's hand and update the viewmodel with the new data
+        // returns the updated viewmodel to the view
         [HttpPost]
         public ActionResult Hit()
         {
@@ -62,9 +67,13 @@ namespace blackjackgame.Controllers
 
         }
 
+        // Handle end of game actions and determine winner
+        // returns the updated viewmodel to the view
         [HttpPost]
         public ActionResult Stand()
         {
+            blackjack.dealer.Remove(blackjack.dealer[1]);
+            blackjack.dealer.Add(blackjack.drawCard());
             // dealer draws until their hand value exceeds 17
             while(blackjack.calculateTotal(blackjack.dealer) < 17)
             {

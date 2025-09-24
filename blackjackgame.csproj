@@ -6,4 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\images\BACK.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\BACK.png" />
+  </ItemGroup>
+
 </Project>
