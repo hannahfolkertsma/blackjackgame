@@ -108,7 +108,11 @@ namespace blackjackgame.Controllers
                 dealerbust = true;
                 playerwin = true;
             }
-            viewmodel = new GameViewModel(blackjack.player, blackjack.dealer, dealerval, playerval, dealerwin, dealerbust, playerwin, draw);
+            else
+            {
+                dealerwin = true;
+            }
+                viewmodel = new GameViewModel(blackjack.player, blackjack.dealer, dealerval, playerval, dealerwin, dealerbust, playerwin, draw);
             return View("Index", viewmodel);
 
 

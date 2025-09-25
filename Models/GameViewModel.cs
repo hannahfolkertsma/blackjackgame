@@ -40,18 +40,10 @@ namespace blackjackgame.Models
                 playerbust = true;
                 dealerwin = true;
             }
-            else if(playerval == 21)
-            {
-                playerwin = true;
-            }
             else if(dealerval > 21)
             {
                 dealerbust = true;
                 playerwin = true;
-            }
-            else if(dealerval == 21)
-            {
-                dealerwin = true;
             }
             if(playerwin && dealerwin)
             {
