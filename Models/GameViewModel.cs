@@ -60,7 +60,17 @@ namespace blackjackgame.Models
             // if none off the above are true, there is no determined winner yet
         }
 
-
-
+        public GameViewModel(List<Card> playerhand, List<Card> dealerhand, int dealerval, int playerval, bool dealerwin, bool dealerbust, bool playerwin, bool draw)
+        {
+            this.dealerhand = dealerhand;
+            this.playerhand = playerhand;
+            this.playerval = playerval;
+            this.dealerval = dealerval;
+            this.dealerwin = dealerwin;
+            this.dealerbust = dealerbust;
+            this.playerwin = playerwin;
+            this.draw = draw;
+            this.gamestart = true;
+        }
     }
 }
