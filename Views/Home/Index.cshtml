@@ -59,7 +59,7 @@
 <div class="container">
     <h1 id="title">Let's play Blackjack!</h1>
     <form >
-        <div id="newgamecontainer"><asp:Button class="buttons" id="start"><img src='@Url.Action("NEWGAME.png", "images")' /></asp:Button></div>
+        <div id="newgamecontainer"><asp:Button class="buttons" id="start"><p class="pixeltextbuttons">New Game</p></asp:Button></div>
         
         @if (Model.gamestart)
         {
@@ -113,17 +113,17 @@
                     <p class="pixeltext">it's a draw!</p>
                 }
             </table>
-            @if(!Model.dealerwin && !Model.playerwin && !Model.draw){
+            @if(!Model.dealerwin && !Model.playerwin){
             <table id="buttonscontainer">
                 <tr>
                 <td/>
                 <td>
 
-                    <asp:Button class="buttons" id="hit"><img src='@Url.Action("HIT.png", "images")' /></asp:Button>
+                            <asp:Button class="buttons" id="hit"><p class="pixeltextbuttons">Hit</p></asp:Button>
                 </td>
                 <td>
 
-                    <asp:Button class="buttons" id="stand"><img src='@Url.Action("STAND.png", "images")' /></asp:Button>
+                            <asp:Button class="buttons" id="stand"><p class="pixeltextbuttons">Stand</p></asp:Button>
                 </td>
                 <td/>
             </tr>
