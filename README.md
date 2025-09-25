@@ -15,4 +15,7 @@ The web app will open on localhost.
  
 *TODO - further enhancements*
 
-In the future, I'd like to implement splitting and doubling down as game mechanics.
+ - implement splitting and doubling down as game mechanics
+ - add a delay between cards being drawn so that it looks more like cards are being dealt - this proved difficult and wasn't feasible under this timeline
+   
+
