@@ -49,7 +49,6 @@ namespace blackjackgame.Models
             {
                 draw = true;
             }
-            // if none off the above are true, there is no determined winner yet
         }
 
         public GameViewModel(List<Card> playerhand, List<Card> dealerhand, int dealerval, int playerval, bool dealerwin, bool dealerbust, bool playerwin, bool draw)

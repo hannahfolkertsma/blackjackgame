@@ -4,10 +4,14 @@ namespace blackjackgame.Models
 {
     public class Game
     {
-
+        // the deck
         public List<Card> deck = new List<Card>();
+        // the player's hand
         public List<Card> player = new List<Card>();
+        // the dealer's hand
         public List<Card> dealer = new List<Card>();
+
+        //populate a new deck when a game is started
         public Game() {
             deck = new
            List<Card>{
@@ -69,7 +73,7 @@ namespace blackjackgame.Models
             };
         }
 
-        // draw a random card from the deck and then remove it from the list 
+        // draw a random card from the deck and then remove it from the deck 
         // returns the drawn card
         public Card drawCard()
         {
@@ -103,39 +107,6 @@ namespace blackjackgame.Models
             }
             Console.WriteLine(score);
             return score;
-
-        }
-
-        
-        
-
-        // play a game of blackjack
-        public void play()
-        {
-            
-            //game start
-            //draw two cards for the dealer - only display one,and hide total
-            dealer.Add(drawCard());
-            dealer.Add(drawCard());
-            //draw two cards for the player
-            player.Add(drawCard());
-            player.Add(drawCard());
-
-            int playerval = calculateTotal(player);
-            int dealerval = calculateTotal(dealer);
-
-            var viewmodel = new GameViewModel(dealer, player, dealerval, playerval);
-
-            //if either pulls 21, end game
-            if (playerval == 21 || dealerval == 21) { return; }
-
-            //if not, continue:
-            //player select "hit" or "stand"
-            // if hit, deal and update
-
-            //if dealer total < 17
-            if(dealerval < 17) { dealer.Add(drawCard()); };
-            
 
         }
     }

@@ -10,11 +10,6 @@ namespace blackjackgame.Controllers
         public GameViewModel viewmodel = new GameViewModel();
         public const int WIN_VALUE = 21;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
             GameViewModel viewModel = new GameViewModel();
@@ -27,8 +22,12 @@ namespace blackjackgame.Controllers
         {
             blackjack = new Game();
             //game start
-            //draw two cards for the dealer - only display one,and hide total
+            //draw the player's first card
+            blackjack.player.Add(blackjack.drawCard());
+            //draw the dealer's first card
             blackjack.dealer.Add(blackjack.drawCard());
+            //draw the player's second card
+            blackjack.player.Add(blackjack.drawCard());
             //check if the dealer draws a natural - if so, the card is played face up immediately
             Random random = new Random();
             int index = random.Next(blackjack.deck.Count);
@@ -41,12 +40,6 @@ namespace blackjackgame.Controllers
             {
                 blackjack.dealer.Add(new Card(CardNames.BACK, "BACK.png", 0));
             }
-            //draw two cards for the player
-            blackjack.player.Add(blackjack.drawCard());
-            blackjack.player.Add(blackjack.drawCard());
-
-            int playerval = blackjack.calculateTotal(blackjack.player);
-            int dealerval = blackjack.calculateTotal(blackjack.dealer);
 
             //populate the viewmodel and return to the view
             viewmodel = new GameViewModel(blackjack.player, blackjack.dealer, blackjack.calculateTotal(blackjack.player), blackjack.calculateTotal(blackjack.dealer));
@@ -92,11 +85,11 @@ namespace blackjackgame.Controllers
             {
                 if (dealerval > playerval)
                 {
-                    dealerwin = true; //the dealer win condition will be set to true when the model updates
+                    dealerwin = true; 
                 }
                 else if (playerval > dealerval)
                 {
-                    playerwin = true; //the player win condition will be set to true when the model updates
+                    playerwin = true; 
                 }
                 // if neither of the above expressions are true, then it is a draw.
                 else
