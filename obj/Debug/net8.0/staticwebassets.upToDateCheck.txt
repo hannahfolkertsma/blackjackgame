@@ -1,4 +1,3 @@
-wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\images\C10.png
 wwwroot\images\C2.png
@@ -26,6 +25,7 @@ wwwroot\images\FA.png
 wwwroot\images\FJ.png
 wwwroot\images\FK.png
 wwwroot\images\FQ.png
+wwwroot\images\HIT.png
 wwwroot\images\L10.png
 wwwroot\images\L2.png
 wwwroot\images\L3.png
@@ -52,6 +52,8 @@ wwwroot\images\MA.png
 wwwroot\images\MJ.png
 wwwroot\images\MK.png
 wwwroot\images\MQ.png
+wwwroot\images\NEWGAME.png
+wwwroot\images\STAND.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -110,3 +112,4 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\css\site.css
