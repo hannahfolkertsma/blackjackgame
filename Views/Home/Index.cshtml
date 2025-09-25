@@ -1,37 +1,135 @@
 ﻿
-@{
-    ViewData["Title"] = "Home Page";
-}
+@model blackjackgame.Models.GameViewModel
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+<link rel=stylesheet href="~/css/site.css" type="text/css">
 
 <script src="//code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
-        $(".start").click(function () {
-            $.ajax({
+        $("#start").click(function () {
+           $.ajax({
                 type: "POST",
                 url:  "@Url.Action("Start", "Home")",
-                dataType: "json",
-                success: function (response){
+                success: function  (response) {
                     console.log(response);
+                    $("body").html(response);
+                  
                 },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
             })
         });
     });
+
+        $("#hit").click(function () {
+            $.ajax({
+                type: "POST",
+                url:  "@Url.Action("Hit", "Home")",
+                success: function  (response) {
+                    console.log(response);
+                    $("body").html(response);
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
+            })
+        });
+           $("#stand").click(function () {
+            $.ajax({
+                type: "POST",
+                url:  "@Url.Action("Stand", "Home")",
+                success: function  (response) {
+                    console.log(response);
+                    $("body").html(response);
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
+            })
+        });
+    
 </script>
 
-<div class="text-center">
-    <h1 class="display-4">blackjack</h1>
+<div class="container">
+    <h1 id="title">Let's play Blackjack!</h1>
     <form >
-        <asp:Button class="start">start</asp:Button>
-        <asp:Button class="hit">hit</asp:Button>
-        <asp:Button class="stand">stand</asp:Button>
-        <div><p>dealer</p>
-            <div id="cardscontainer">
-
-            </div>
-            </div>
-        <div><p>player</p></div>
+        <div id="newgamecontainer"><asp:Button class="buttons" id="start"><img src='@Url.Action("NEWGAME.png", "images")' /></asp:Button></div>
         
+        @if (Model.gamestart)
+        {
+            <table id="cardcontainer">
+                <tr>
+                    <td>
+                        <div>
+                            @if (!Model.dealerwin && !Model.playerwin)
+                            {
+                                <p class="pixeltext">dealer</p><p class="scoretext"> ?</p>
+                            }
+                            else
+                            {
+                                <p class="pixeltext">dealer</p><p class="scoretext">@Model.dealerval</p>
+                            }
+                            @foreach (Card card in Model.dealerhand)
+                            {
+                                <img class="images" src='@Url.Action(card.image, "images")' />
+                            }
+                            @if (Model.dealerbust)
+                            {
+                                <p class="pixeltext">dealer bust</p>
+                            }
+                            @if (Model.dealerwin)
+                            {
+                                <p class="pixeltext">dealer wins</p>
+                            }
+                        </div>
+                    </td>
+                    <td>
+
+                        <div>
+                            <p class="pixeltext">you</p><p class="scoretext">@Model.playerval</p>
+                            @foreach (Card card in Model.playerhand)
+                            {
+                                <img class="images" src='@Url.Action(card.image, "images")' />
+                            }
+                            @if (Model.playerbust)
+                            {
+                                <p class="pixeltext">you bust</p>
+                            }
+                            @if (Model.playerwin)
+                            {
+                                <p class="pixeltext">you win!</p>
+                            }
+                        </div>
+                    </td>
+                </tr>
+                @if (Model.draw)
+                {
+                    <p class="pixeltext">it's a draw!</p>
+                }
+            </table>
+            @if(!Model.dealerwin && !Model.playerwin){
+            <table id="buttonscontainer">
+                <tr>
+                <td/>
+                <td>
+
+                    <asp:Button class="buttons" id="hit"><img src='@Url.Action("HIT.png", "images")' /></asp:Button>
+                </td>
+                <td>
+
+                    <asp:Button class="buttons" id="stand"><img src='@Url.Action("STAND.png", "images")' /></asp:Button>
+                </td>
+                <td/>
+            </tr>
+        </table>
+            }
+        }
     </form>
 </div>
 
