@@ -68,6 +68,7 @@ namespace blackjackgame.Controllers
 
         }
 
+
         // Handle end of game actions and determine winner
         // returns the updated viewmodel to the view
         [HttpPost]
@@ -78,30 +79,36 @@ namespace blackjackgame.Controllers
             // dealer draws until their hand value exceeds 17
             while (blackjack.calculateTotal(blackjack.dealer) < 17)
             {
-
                 blackjack.dealer.Add(blackjack.drawCard());
             }
             // determine win 
             int dealerval = blackjack.calculateTotal(blackjack.dealer);
             int playerval = blackjack.calculateTotal(blackjack.player);
+            bool dealerwin = false;
+            bool playerwin = false;
+            bool draw = false;
+            bool dealerbust = false;
             if (dealerval < WIN_VALUE)
             {
                 if (dealerval > playerval)
                 {
-                    dealerval = WIN_VALUE; //the dealer win condition will be set to true when the model updates
+                    dealerwin = true; //the dealer win condition will be set to true when the model updates
                 }
                 else if (playerval > dealerval)
                 {
-                    playerval = WIN_VALUE; //the player win condition will be set to true when the model updates
+                    playerwin = true; //the player win condition will be set to true when the model updates
                 }
                 // if neither of the above expressions are true, then it is a draw.
                 else
                 {
-                    dealerval = WIN_VALUE;
-                    playerval = WIN_VALUE;
+                    draw = true;
                 }
             }
-            viewmodel = new GameViewModel(blackjack.player, blackjack.dealer, playerval, dealerval);
+            else if(dealerval > WIN_VALUE){
+                dealerbust = true;
+                playerwin = true;
+            }
+            viewmodel = new GameViewModel(blackjack.player, blackjack.dealer, dealerval, playerval, dealerwin, dealerbust, playerwin, draw);
             return View("Index", viewmodel);
 
 
