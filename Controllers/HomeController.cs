@@ -40,8 +40,12 @@ namespace blackjackgame.Controllers
                 viewmodel.dealerwin = true;
             }
             //populate the viewmodel and return to the view
-            viewmodel.update(blackjack.player, blackjack.dealer, blackjack.calculateTotal(blackjack.player), blackjack.calculateTotal(blackjack.dealer));
-
+            viewmodel.dealerhand = blackjack.dealer;
+            viewmodel.playerhand = blackjack.player;
+            viewmodel.dealerval = blackjack.calculateTotal(blackjack.dealer);
+            viewmodel.playerval = blackjack.calculateTotal(blackjack.player);
+            viewmodel.gamestart = true;
+       
             return View("Index", viewmodel);
 
 
@@ -60,7 +64,13 @@ namespace blackjackgame.Controllers
                 playerbust = true; 
                 dealerwin = true;
             }
-            viewmodel.update(blackjack.player, blackjack.dealer, blackjack.calculateTotal(blackjack.player), blackjack.calculateTotal(blackjack.dealer), dealerwin, dealerbust:false, playerwin:false, playerbust, draw:false);
+            viewmodel.playerhand = blackjack.player;
+            viewmodel.dealerhand = blackjack.dealer;
+            viewmodel.playerval = blackjack.calculateTotal(blackjack.player);
+            viewmodel.dealerval = blackjack.calculateTotal(blackjack.dealer);
+            viewmodel.dealerwin = dealerwin;
+            viewmodel.playerbust = playerbust;
+            viewmodel.gamestart = true;
             return View("Index", viewmodel);
 
 
@@ -118,7 +128,17 @@ namespace blackjackgame.Controllers
                 }
 
             }
-            viewmodel.update(blackjack.player, blackjack.dealer, playerval, dealerval, dealerwin, dealerbust, playerwin, playerbust: false, draw);
+
+            viewmodel.playerhand = blackjack.player;
+            viewmodel.dealerhand = blackjack.dealer;
+            viewmodel.playerval = playerval;
+            viewmodel.dealerval = dealerval;
+            viewmodel.dealerwin = dealerwin;
+            viewmodel.dealerbust = dealerbust;
+            viewmodel.playerwin = playerwin;
+            viewmodel.draw = draw;
+            viewmodel.gamestart = true;
+
             return View("Index", viewmodel);
 
 
