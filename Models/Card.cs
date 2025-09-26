@@ -1,20 +1,33 @@
 ﻿namespace blackjackgame.Models
 {
+    // represents one card in the deck
     public class Card
     {
-        public CardNames name;
-        public string image;
-        public int value;
+        public CardNames name { get; set; }
+        public string image { get; set; }
+        public int value { get; set; }
+        public bool shown { get; set; }
 
         public Card (CardNames name, string img, int value){
             this.name = name;
             this.image = img;
             this.value = value;
+            this.shown = true;
     }
+        public void hide()
+        {
+            this.shown = false;
+        }
+
+        public void show()
+        {
+            this.shown = true;
+        }
     }
 
     public enum CardNames
     {
+        // suit - Mushroom
         MA,
         MK,
         MQ,
@@ -28,6 +41,7 @@
         M4,
         M3,
         M2,
+        // suit - Frog
         FA,
         FK,
         FQ,
@@ -41,6 +55,7 @@
         F4,
         F3,
         F2,
+        // suit - Cat
         CA,
         CK,
         CQ,
@@ -54,6 +69,7 @@
         C4,
         C3,
         C2,
+        // suit - Leaf
         LA,
         LK,
         LQ,

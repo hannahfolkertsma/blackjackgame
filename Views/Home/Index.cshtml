@@ -14,7 +14,6 @@
                 type: "POST",
                 url:  "@Url.Action("Start", "Home")",
                 success: function  (response) {
-                    console.log(response);
                     $("body").html(response);
                   
                 },
@@ -30,7 +29,6 @@
                 type: "POST",
                 url:  "@Url.Action("Hit", "Home")",
                 success: function  (response) {
-                    console.log(response);
                     $("body").html(response);
 
                 },
@@ -44,7 +42,6 @@
                 type: "POST",
                 url:  "@Url.Action("Stand", "Home")",
                 success: function  (response) {
-                    console.log(response);
                     $("body").html(response);
 
                 },
@@ -67,9 +64,9 @@
                 <tr>
                     <td>
                         <div>
-                            @if (!Model.dealerwin && !Model.playerwin && !Model.draw)
-                            {
-                                <p class="pixeltext">dealer</p><p class="scoretext"> ?</p>
+                            @if (Model.dealerhand[1].shown == false){
+
+                            <p class="pixeltext">dealer</p><p class="scoretext"> ?</p>
                             }
                             else
                             {
@@ -77,15 +74,16 @@
                             }
                             @foreach (Card card in Model.dealerhand)
                             {
-                                <img class="images" src='@Url.Action(card.image, "images")' />
+                                    <img class="images" src='@Url.Action(card.shown ? card.image : "BACK.png", "images")' />
+                               
                             }
                             @if (Model.dealerbust)
                             {
-                                <p class="pixeltext">dealer bust</p>
+                                <p class="pixeltext">dealer bust!</p>
                             }
                             @if (Model.dealerwin)
                             {
-                                <p class="pixeltext">dealer wins</p>
+                                <p class="pixeltext">dealer wins!</p>
                             }
                         </div>
                     </td>
@@ -99,7 +97,7 @@
                             }
                             @if (Model.playerbust)
                             {
-                                <p class="pixeltext">you bust</p>
+                                <p class="pixeltext">you bust!</p>
                             }
                             @if (Model.playerwin)
                             {
@@ -108,12 +106,12 @@
                         </div>
                     </td>
                 </tr>
-                @if (Model.draw)
-                {
-                    <p class="pixeltext">it's a draw!</p>
-                }
             </table>
-            @if(!Model.dealerwin && !Model.playerwin){
+            @if (Model.draw)
+            {
+                <p id="draw" class="pixeltext">it's a draw!</p>
+            }
+            @if(!Model.dealerwin && !Model.playerwin && !Model.draw){
             <table id="buttonscontainer">
                 <tr>
                 <td/>

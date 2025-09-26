@@ -1,13 +1,15 @@
-﻿using System.Text.Json.Serialization.Metadata;
-
-namespace blackjackgame.Models
+﻿namespace blackjackgame.Models
 {
     public class Game
     {
+        // the deck
+        public List<Card> deck { get; set; }
+        // the player's hand
+        public List<Card> player { get; set; }
+        // the dealer's hand
+        public List<Card> dealer { get; set; }
 
-        public List<Card> deck = new List<Card>();
-        public List<Card> player = new List<Card>();
-        public List<Card> dealer = new List<Card>();
+        //populate a new deck when a game is started
         public Game() {
             deck = new
            List<Card>{
@@ -67,9 +69,13 @@ namespace blackjackgame.Models
             new Card(CardNames.L3, "L3.png", 3),
             new Card(CardNames.L2, "L2.png", 2),
             };
+
+            player = new List<Card>();
+
+            dealer = new List<Card>();
         }
 
-        // draw a random card from the deck and then remove it from the list 
+        // draw a random card from the deck and then remove it from the deck 
         // returns the drawn card
         public Card drawCard()
         {
@@ -101,41 +107,7 @@ namespace blackjackgame.Models
                     score += current.value;
                 }
             }
-            Console.WriteLine(score);
             return score;
-
-        }
-
-        
-        
-
-        // play a game of blackjack
-        public void play()
-        {
-            
-            //game start
-            //draw two cards for the dealer - only display one,and hide total
-            dealer.Add(drawCard());
-            dealer.Add(drawCard());
-            //draw two cards for the player
-            player.Add(drawCard());
-            player.Add(drawCard());
-
-            int playerval = calculateTotal(player);
-            int dealerval = calculateTotal(dealer);
-
-            var viewmodel = new GameViewModel(dealer, player, dealerval, playerval);
-
-            //if either pulls 21, end game
-            if (playerval == 21 || dealerval == 21) { return; }
-
-            //if not, continue:
-            //player select "hit" or "stand"
-            // if hit, deal and update
-
-            //if dealer total < 17
-            if(dealerval < 17) { dealer.Add(drawCard()); };
-            
 
         }
     }
