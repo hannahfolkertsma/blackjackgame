@@ -67,7 +67,7 @@
                 <tr>
                     <td>
                         <div>
-                            @if (Model.dealerhand[1].image == "BACK.png"){
+                            @if (Model.dealerhand[1].shown == false){
 
                             <p class="pixeltext">dealer</p><p class="scoretext"> ?</p>
                             }
@@ -77,7 +77,8 @@
                             }
                             @foreach (Card card in Model.dealerhand)
                             {
-                                <img class="images" src='@Url.Action(card.image, "images")' />
+                                    <img class="images" src='@Url.Action(card.shown ? card.image : "BACK.png", "images")' />
+                               
                             }
                             @if (Model.dealerbust)
                             {

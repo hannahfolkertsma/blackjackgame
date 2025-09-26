@@ -5,16 +5,27 @@
         public CardNames name;
         public string image;
         public int value;
+        public bool shown = true;
 
         public Card (CardNames name, string img, int value){
             this.name = name;
             this.image = img;
             this.value = value;
     }
+        public void hide()
+        {
+            this.shown = false;
+        }
+
+        public void show()
+        {
+            this.shown = true;
+        }
     }
 
     public enum CardNames
     {
+        // suit - Mushroom
         MA,
         MK,
         MQ,
@@ -28,6 +39,7 @@
         M4,
         M3,
         M2,
+        // suit - Frog
         FA,
         FK,
         FQ,
@@ -41,6 +53,7 @@
         F4,
         F3,
         F2,
+        // suit - Cat
         CA,
         CK,
         CQ,
@@ -54,6 +67,7 @@
         C4,
         C3,
         C2,
+        // suit - Leaf
         LA,
         LK,
         LQ,

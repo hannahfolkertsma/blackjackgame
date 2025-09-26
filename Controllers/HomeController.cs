@@ -29,16 +29,11 @@ namespace blackjackgame.Controllers
             //draw the player's second card
             blackjack.player.Add(blackjack.drawCard());
             //check if the dealer draws a natural - if so, the card is played face up immediately
-            Random random = new Random();
-            int index = random.Next(blackjack.deck.Count);
-            Card pickedCard = blackjack.deck[index];
-            if (blackjack.calculateTotal(new List<Card>() { blackjack.dealer[0], pickedCard }) == WIN_VALUE)
+            blackjack.dealer.Add(blackjack.drawCard());
+            if (blackjack.calculateTotal(blackjack.dealer) != WIN_VALUE)
             {
-                blackjack.dealer.Add(pickedCard);
-            }
-            else
-            {
-                blackjack.dealer.Add(new Card(CardNames.BACK, "BACK.png", 0));
+
+                blackjack.dealer[1].hide();
             }
 
             //populate the viewmodel and return to the view
@@ -74,8 +69,8 @@ namespace blackjackgame.Controllers
         [HttpPost]
         public ActionResult Stand()
         {
-            blackjack.dealer.Remove(blackjack.dealer[1]);
-            blackjack.dealer.Add(blackjack.drawCard());
+            // turn over the dealer's hidden card
+            blackjack.dealer[1].show();
             // dealer draws until their hand value exceeds 17
             while (blackjack.calculateTotal(blackjack.dealer) < 17)
             {
