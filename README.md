@@ -5,7 +5,7 @@
 - In Visual Studio, open the project
 - Click the green arrow at the top
 - The web app will open on localhost
-\n or:
+or:
 - Clone the code to your local machine
 - in your terminal, cd into the blackjackgame folder
 - run "dotnet run"
