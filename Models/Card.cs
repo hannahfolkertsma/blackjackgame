@@ -1,16 +1,18 @@
 ﻿namespace blackjackgame.Models
 {
+    // represents one card in the deck
     public class Card
     {
-        public CardNames name;
-        public string image;
-        public int value;
-        public bool shown = true;
+        public CardNames name { get; set; }
+        public string image { get; set; }
+        public int value { get; set; }
+        public bool shown { get; set; }
 
         public Card (CardNames name, string img, int value){
             this.name = name;
             this.image = img;
             this.value = value;
+            this.shown = true;
     }
         public void hide()
         {

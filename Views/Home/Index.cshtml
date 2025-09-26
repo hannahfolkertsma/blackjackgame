@@ -14,7 +14,6 @@
                 type: "POST",
                 url:  "@Url.Action("Start", "Home")",
                 success: function  (response) {
-                    console.log(response);
                     $("body").html(response);
                   
                 },
@@ -30,7 +29,6 @@
                 type: "POST",
                 url:  "@Url.Action("Hit", "Home")",
                 success: function  (response) {
-                    console.log(response);
                     $("body").html(response);
 
                 },
@@ -44,7 +42,6 @@
                 type: "POST",
                 url:  "@Url.Action("Stand", "Home")",
                 success: function  (response) {
-                    console.log(response);
                     $("body").html(response);
 
                 },
@@ -82,11 +79,11 @@
                             }
                             @if (Model.dealerbust)
                             {
-                                <p class="pixeltext">dealer bust</p>
+                                <p class="pixeltext">dealer bust!</p>
                             }
                             @if (Model.dealerwin)
                             {
-                                <p class="pixeltext">dealer wins</p>
+                                <p class="pixeltext">dealer wins!</p>
                             }
                         </div>
                     </td>
@@ -100,7 +97,7 @@
                             }
                             @if (Model.playerbust)
                             {
-                                <p class="pixeltext">you bust</p>
+                                <p class="pixeltext">you bust!</p>
                             }
                             @if (Model.playerwin)
                             {

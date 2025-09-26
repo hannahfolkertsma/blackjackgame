@@ -35,7 +35,10 @@ namespace blackjackgame.Controllers
 
                 blackjack.dealer[1].hide();
             }
-
+            if(blackjack.calculateTotal(blackjack.dealer) == WIN_VALUE)
+            {
+                viewmodel.dealerwin = true;
+            }
             //populate the viewmodel and return to the view
             viewmodel.update(blackjack.player, blackjack.dealer, blackjack.calculateTotal(blackjack.player), blackjack.calculateTotal(blackjack.dealer));
 

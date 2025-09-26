@@ -1,15 +1,13 @@
-﻿using System.Text.Json.Serialization.Metadata;
-
-namespace blackjackgame.Models
+﻿namespace blackjackgame.Models
 {
     public class Game
     {
         // the deck
-        public List<Card> deck = new List<Card>();
+        public List<Card> deck { get; set; }
         // the player's hand
-        public List<Card> player = new List<Card>();
+        public List<Card> player { get; set; }
         // the dealer's hand
-        public List<Card> dealer = new List<Card>();
+        public List<Card> dealer { get; set; }
 
         //populate a new deck when a game is started
         public Game() {
@@ -71,6 +69,10 @@ namespace blackjackgame.Models
             new Card(CardNames.L3, "L3.png", 3),
             new Card(CardNames.L2, "L2.png", 2),
             };
+
+            player = new List<Card>();
+
+            dealer = new List<Card>();
         }
 
         // draw a random card from the deck and then remove it from the deck 
@@ -105,7 +107,6 @@ namespace blackjackgame.Models
                     score += current.value;
                 }
             }
-            Console.WriteLine(score);
             return score;
 
         }
