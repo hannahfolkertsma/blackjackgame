@@ -10,13 +10,14 @@
 - Clone the code to your local machine
 - in your terminal, cd into the blackjackgame folder
 - run "dotnet run"
-- go to the specified localhost URl
+- go to the specified localhost URL
 
 *about:*
 
 - This is a game of blackjack on an ASP.NET Web App. This app uses ASP.NET MVC alongside JQuery alongside custom designed pixel art assets.
 - This game follows the standard Blackjack rules from Bicycle cards.
 - The font is "Pixelify Sans" from Google Fonts.
+- The card art is inspired by the upcoming Fall season!
   
 *TODO - further enhancements*
 
