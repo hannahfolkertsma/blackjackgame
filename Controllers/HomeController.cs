@@ -10,12 +10,12 @@ namespace blackjackgame.Controllers
         public GameViewModel viewmodel = new GameViewModel();
         public const int WIN_VALUE = 21;
 
+        
         public IActionResult Index()
         {
-            GameViewModel viewModel = new GameViewModel();
-            return View("Index", viewModel);
+            return View("Index", viewmodel);
         }
-
+        
 
         [HttpPost]
         public ActionResult Start()
@@ -42,7 +42,7 @@ namespace blackjackgame.Controllers
             }
 
             //populate the viewmodel and return to the view
-            viewmodel = new GameViewModel(blackjack.player, blackjack.dealer, blackjack.calculateTotal(blackjack.player), blackjack.calculateTotal(blackjack.dealer));
+            viewmodel.update(blackjack.player, blackjack.dealer, blackjack.calculateTotal(blackjack.player), blackjack.calculateTotal(blackjack.dealer));
 
             return View("Index", viewmodel);
 
@@ -54,8 +54,15 @@ namespace blackjackgame.Controllers
         [HttpPost]
         public ActionResult Hit()
         {
+            bool playerbust = false;
+            bool dealerwin = false;
             blackjack.player.Add(blackjack.drawCard());
-            viewmodel = new GameViewModel(blackjack.player, blackjack.dealer, blackjack.calculateTotal(blackjack.player), blackjack.calculateTotal(blackjack.dealer));
+            if(blackjack.calculateTotal(blackjack.player) > WIN_VALUE) 
+            { 
+                playerbust = true; 
+                dealerwin = true;
+            }
+            viewmodel.update(blackjack.player, blackjack.dealer, blackjack.calculateTotal(blackjack.player), blackjack.calculateTotal(blackjack.dealer), dealerwin, dealerbust:false, playerwin:false, playerbust, draw:false);
             return View("Index", viewmodel);
 
 
@@ -101,11 +108,19 @@ namespace blackjackgame.Controllers
                 dealerbust = true;
                 playerwin = true;
             }
-            else
+            else // if the dealer draws up to 21 - check for a draw
             {
-                dealerwin = true;
+                if(dealerval != playerval)
+                {
+                    dealerwin = true;
+                }
+                else
+                {
+                    draw = true;
+                }
+
             }
-                viewmodel = new GameViewModel(blackjack.player, blackjack.dealer, dealerval, playerval, dealerwin, dealerbust, playerwin, draw);
+            viewmodel.update(blackjack.player, blackjack.dealer, playerval, dealerval, dealerwin, dealerbust, playerwin, playerbust: false, draw);
             return View("Index", viewmodel);
 
 
